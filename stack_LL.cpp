@@ -16,6 +16,7 @@ class Stack{
 		
 	void push(int i);
 	int pop();
+	void Top();
 	void viewAll();
 };
 void Stack::push(int i){
@@ -48,6 +49,14 @@ int Stack::pop(){
 		delete temp;
 	}
 	return n;
+}
+
+void Stack::Top(){
+	if(top==NULL){
+		cout << endl;
+	}else{
+		cout << top->data << " Terhapus"<<endl;
+	}
 }
 
 void Stack::viewAll(){
@@ -85,8 +94,8 @@ int main(){
 			q.push(temp);
 			break;
 		case 2:
-			temp=q.pop();
-			cout<<temp<<" tehapus"<<endl;
+			q.Top();
+			q.pop();
 			break;
 		case 3:
 			q.viewAll();
