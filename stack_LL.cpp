@@ -17,17 +17,6 @@ class Stack{
 	void push(int i);
 	int pop();
 	void viewAll();
-	
-	~Stack(){
-		if (top==NULL)
-		return;
-		Element *temp;
-		while (top!=NULL){
-			temp=top;
-			top=top->link;
-			delete temp;
-		}
-	}
 };
 void Stack::push(int i){
 	Element *temp;
@@ -36,10 +25,13 @@ void Stack::push(int i){
 	temp->link=NULL;
 	if (top==NULL){
 		top=temp;
+		top->link=NULL;
+		cout<<"Input Berhasil"<<endl;
 	}
 	else{
 		temp->link=top;
 		top=temp;
+		cout<<"Input Berhasil"<<endl;
 	}
 }
 
@@ -48,7 +40,6 @@ int Stack::pop(){
 	int n;
 	if (top==NULL){
 		cout<<"Stack Empty"<<endl;
-		return NULL;
 	}
 	else{
 		n=top->data;
@@ -60,14 +51,18 @@ int Stack::pop(){
 }
 
 void Stack::viewAll(){
-	Element *temp;
-	temp=top;
-	while(temp->link !=NULL){
-		cout<<temp->data<<endl;
-		temp=temp->link;
+	if(top==NULL){
+		cout<<"Stack Empty"<<endl;
+	}else{
+		Element *temp;
+		temp=top;
+		while(temp!=NULL){
+			cout<<temp->data<<endl;
+			temp=temp->link;
+		}
 	}
 }
-
+	
 int main(){
 	Stack q;
 	int temp;
